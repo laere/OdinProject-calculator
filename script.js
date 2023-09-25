@@ -5,7 +5,7 @@ let calcButtons = document.querySelectorAll(".calc-btn");
 
 calcButtons.forEach(btn => {
     btn.addEventListener("click", e => {
-        
+        input.value += e.target.innerHTML;
     })
 })
 
