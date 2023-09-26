@@ -1,15 +1,31 @@
 // 
 
 let input = document.getElementById("input");
-let calcButtons = document.querySelectorAll(".calc-btn");
 
-calcButtons.forEach(btn => {
-    btn.addEventListener("click", e => {
-        input.value += e.target.innerHTML;
-    })
-})
+let num1;
+let num2;
+let operator;
 
-function equals() {
+
+
+function operate(operator, num1, num2) {
+    switch(operator) {
+        case "+": 
+            add(num1, nume2)
+            break;
+        case "-":
+            subtract(num1, num2);
+            break;
+        case "*":
+            multiply(num1, num2)
+            break;
+        case "/":
+            divide(num1, num2);
+            break;
+        default:  
+    }
+        
+        
 
 }
 
@@ -28,3 +44,4 @@ function multiply(num1, num2) {
 function divide(num1, num2) {
     return num1 / num2;
 }
+
