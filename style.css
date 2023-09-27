@@ -22,6 +22,14 @@ body {
     font-weight: 700;
 }
 
+#input {
+    background-color: white;
+    flex: 1 1 0%;
+    align-self: center;
+    padding: 40px 0 0 0;
+
+}
+
 #calculator {
     display: flex;
     flex-direction: column;
@@ -53,11 +61,3 @@ button:hover {
     background-color: #f5f8fd; 
 }
 
-input {
-    flex: 1 1;
-    padding: 0;
-    margin: 0;
-    border: none;
-    font-size: 26px;
-    padding: 10px 20px;
-}
