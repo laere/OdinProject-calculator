@@ -20,39 +20,6 @@ let operator;
 //The 2 numbers and operator are then passed into a function that returns the calculated value
 //The display screen is updated with said calculated value.
 
-buttons.forEach(btn => {
-    btn.addEventListener("click", e => {
-    let val = e.target.innerText;
-    // debugger;
-    if (storedNumber !== undefined && operator !== undefined) {
-        nextNumber = parseInt(val);
-    } else {
-        storedNumber = parseInt(val);
-    }
-      
-      console.log(storedNumber);
-      console.log(operator);
-      console.log(nextNumber);
-      updateDisplay(e.target.innerText);
-    })
-    
-})
-
-function updateDisplay(n) {
-    input.textContent = n;
-    console.log(n);
-}
-
-
-
-operators.forEach(op => {
-    op.addEventListener("click", e => {
-        operator = e.target.innerText;
-        console.log(operator)
-    })
-})
-
-
 const operateFunctions = {
     add: (num1, num2) => num1 + num2,
     subtract: (num1, num2) => num1 - num2,
@@ -83,13 +50,55 @@ function operate(operator, num1, num2) {
     updateDisplay(sum);
 }
 
-clear.addEventListener("click", e => {
+function getNumbers(num) {
+    // debugger;
+    if (storedNumber !== undefined && operator !== undefined) {
+        nextNumber = parseInt(num);
+    } else {
+        storedNumber = parseInt(num);
+    }   
+    //   console.log(storedNumber);
+    //   console.log(operator);
+    //   console.log(nextNumber);
+      updateDisplay(num);
+}
+
+function updateDisplay(n) {
+    input.textContent = n;
+}
+
+
+function clearDisplay() {
     input.textContent = "";
+}
+
+function getOperator(op) {
+    operator = op;
+}
+
+// EVENT LISTENERS //
+
+clear.addEventListener("click", e => {
+    clearDisplay();
 })
 
 equals.addEventListener("click", e => {
     operate(operator, storedNumber, nextNumber);
 })
 
+operators.forEach(op => {
+    op.addEventListener("click", e => {
+        let op = e.target.innerText;
+        getOperator(op)
+        console.log(operator)
+    })
+})
 
+buttons.forEach(btn => {
+    btn.addEventListener("click", e => {
+    let num = e.target.innerText;
+    getNumbers(num);
+    })
+    
+})
 
