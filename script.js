@@ -1,4 +1,3 @@
-// 
 
 let input = document.getElementById("input");
 let buttons = document.querySelectorAll(".button");
@@ -6,10 +5,9 @@ let clear = document.getElementById("clear")
 let operators = document.querySelectorAll(".operator");
 let equals = document.getElementById("equals");
 
-let nums = [];
-let storedNumber;
-let nextNumber;
-let operator;
+let storedNumber = "";
+let nextNumber = "";
+let operator = ""
 
 //User punches in a number
 //That number gets saved into a variable
@@ -29,7 +27,10 @@ const operateFunctions = {
 
 function operate(operator, num1, num2) {
     let sum;
-    debugger;
+    num1 = parseInt(num1);
+    num2 = parseInt(num2);
+
+    // debugger;
     switch(operator) {
         case "+": 
             sum = operateFunctions.add(num1, num2)
@@ -45,22 +46,19 @@ function operate(operator, num1, num2) {
         default:
             console.log("Not working");
     }
-    console.log(sum);
-
+  
     updateDisplay(sum);
 }
 
 function getNumbers(num) {
     // debugger;
-    if (storedNumber !== undefined && operator !== undefined) {
-        nextNumber = parseInt(num);
+    if (storedNumber !== "" && operator !== "") {
+        nextNumber += num;
+        updateDisplay(nextNumber);
     } else {
-        storedNumber = parseInt(num);
+        storedNumber += num;
+        updateDisplay(storedNumber);
     }   
-    //   console.log(storedNumber);
-    //   console.log(operator);
-    //   console.log(nextNumber);
-      updateDisplay(num);
 }
 
 function updateDisplay(n) {
@@ -70,6 +68,10 @@ function updateDisplay(n) {
 
 function clearDisplay() {
     input.textContent = "";
+    storedNumber = "";
+    nextNumber = "";
+    operator = "";
+    console.log(operator);
 }
 
 function getOperator(op) {
