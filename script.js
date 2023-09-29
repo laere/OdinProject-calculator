@@ -4,11 +4,11 @@ let input = document.getElementById("input");
 let buttons = document.querySelectorAll(".button");
 let clear = document.getElementById("clear")
 let operators = document.querySelectorAll(".operator");
+let equals = document.getElementById("equals");
 
 let nums = [];
-let prevNum;
-let num1;
-let num2;
+let storedNumber;
+let nextNumber;
 let operator;
 
 //User punches in a number
@@ -22,15 +22,25 @@ let operator;
 
 buttons.forEach(btn => {
     btn.addEventListener("click", e => {
-      nums.push(e.target.innerText);
+    let val = e.target.innerText;
+    // debugger;
+    if (storedNumber !== undefined && operator !== undefined) {
+        nextNumber = parseInt(val);
+    } else {
+        storedNumber = parseInt(val);
+    }
+      
+      console.log(storedNumber);
+      console.log(operator);
+      console.log(nextNumber);
       updateDisplay(e.target.innerText);
     })
     
 })
 
 function updateDisplay(n) {
-    input.textContent = num1;
-    console.log(nums);
+    input.textContent = n;
+    console.log(n);
 }
 
 
@@ -38,7 +48,6 @@ function updateDisplay(n) {
 operators.forEach(op => {
     op.addEventListener("click", e => {
         operator = e.target.innerText;
-        nums.push(operator);
         console.log(operator)
     })
 })
@@ -52,11 +61,35 @@ const operateFunctions = {
 }
 
 function operate(operator, num1, num2) {
-    
+    let sum;
+    debugger;
+    switch(operator) {
+        case "+": 
+            sum = operateFunctions.add(num1, num2)
+            break;
+        case "-":
+            sum =  operateFunctions.subtract(num1, num2);
+            break;
+        case "*":
+            sum =  operateFunctions.multiply(num1, num2)
+            break;
+        case "/":
+            sum = operateFunctions.divide(num1, num2);
+        default:
+            console.log("Not working");
+    }
+    console.log(sum);
+
+    updateDisplay(sum);
 }
 
 clear.addEventListener("click", e => {
     input.textContent = "";
 })
+
+equals.addEventListener("click", e => {
+    operate(operator, storedNumber, nextNumber);
+})
+
 
 
