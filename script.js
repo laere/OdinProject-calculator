@@ -9,14 +9,16 @@ let storedNumber = "";
 let nextNumber = "";
 let operator = ""
 
-//User punches in a number
-//That number gets saved into a variable
-//User hits an operator
-//That operator get's saved into a variable
-//User hits  a second number
-//That number gets saved into a variable
-//The 2 numbers and operator are then passed into a function that returns the calculated value
-//The display screen is updated with said calculated value.
+//PSEUDOCODE.
+
+//User enters first number
+//User enters operator
+//Because both first number AND operator exist
+//User must be entering second number.
+//When equals is hit we operate the 2 numbers based on the op.
+//Return sum after operation
+//First number now EQUALS sum....
+
 
 const operateFunctions = {
     add: (num1, num2) => num1 + num2,
@@ -30,7 +32,7 @@ function operate(operator, num1, num2) {
     num1 = parseInt(num1);
     num2 = parseInt(num2);
 
-    // debugger;
+    debugger;
     switch(operator) {
         case "+": 
             sum = operateFunctions.add(num1, num2)
@@ -46,7 +48,8 @@ function operate(operator, num1, num2) {
         default:
             console.log("Not working");
     }
-  
+    storedNumber = sum;
+    nextNumber = "";
     updateDisplay(sum);
 }
 
