@@ -20,7 +20,6 @@ let operator = ""
 //Return sum after operation
 //First number now EQUALS sum....
 
-
 const operateFunctions = {
     add: (num1, num2) => num1 + num2,
     subtract: (num1, num2) => num1 - num2,
@@ -30,9 +29,16 @@ const operateFunctions = {
 
 function operate(operator, num1, num2) {
     let sum;
-  
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    debugger;
+
+    // Tests if each number contains more than 1 decimal
+    if (multipleDecimals(num1) || multipleDecimals(num2)) {
+        return input.textContent = "ERROR!";
+    }
+
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
+
     if (num2 === 0) {
         let text = "I see you're trying to divide by 0!!"
         return updateDisplay(text);
@@ -50,19 +56,33 @@ function operate(operator, num1, num2) {
             break;
         case "/":
             sum = operateFunctions.divide(num1, num2);
+            break;
         default:
             console.log("Not working");
     }
 
-    sum = sum.toFixed(4);
+    sum = determineIfDecimal(sum);
+
     firstNumber = sum;
     secondNumber = "";
     
     updateDisplay(sum);
 }
 
+function determineIfDecimal(sum) {
+    let decimal = sum.toString().split("");
+    return decimal.includes(".") ? sum.toFixed(1) : sum;
+}
+
+function multipleDecimals(num) {
+    console.log(typeof num);
+    let numSearch = num.split("").filter((n) => n === ".");
+    return numSearch.length > 2 ? true : false;
+}
+
 function getNumbers(num) {
-    // debugger;
+   
+    //If number contains more than 1 decimal, return.
     
     if (firstNumber !== "" && operator !== "") {
         secondNumber += num;
@@ -71,28 +91,27 @@ function getNumbers(num) {
         firstNumber += num;
         updateDisplay(firstNumber);
     }   
-
-}
-
-function currentDisplay(n) {
-   
 }
 
 function updateDisplay(n) {
     input.textContent = n;
 }
 
-
 function clearDisplay() {
     input.textContent = "";
     firstNumber = "";
     secondNumber = "";
     operator = "";
-    // console.log(operator);
 }
 
 function getOperator(op) {
     operator = op;
+}
+
+//When user clicks operate
+//Update current operation
+function currentOperation() {
+    currentInput.textContent
 }
 
 // EVENT LISTENERS //

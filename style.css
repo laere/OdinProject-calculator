@@ -16,12 +16,6 @@ body {
     height: 900px;
 }
 
-#equals {
-    background-color: #4285f4;
-    color: white;
-    font-weight: 700;
-}
-
 #input-container {
     display: flex;
     flex-direction: column;
@@ -58,6 +52,16 @@ body {
     gap: 8px;
 }
 
+.operator {
+    background-color: #4285f4;
+    color: white;
+    font-weight: 700;
+}
+
+.operator:hover {
+    background-color: #a2b8e4;
+    color: #4285f4;
+}
 
 button {
    flex: 1 1 0%;
