@@ -1,4 +1,6 @@
 
+//ADD NEGATIVE NUMBERS
+
 let input = document.getElementById("input");
 let buttons = document.querySelectorAll(".button");
 let clear = document.getElementById("clear")
